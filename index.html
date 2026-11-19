@@ -75,13 +75,32 @@
     .hero {
       padding: 64px 0 52px;
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 40px;
+      grid-template-columns: 1.35fr 0.75fr;
+      gap: 36px;
       align-items: center;
     }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      background: var(--accent-tint);
+      border: 1px solid #99f6e4;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
     .hero h1 {
-      font-size: clamp(2.15rem, 4.4vw, 3.1rem);
-      line-height: 1.12;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      line-height: 1.1;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
     }
@@ -127,21 +146,46 @@
     }
     .btn-ghost:hover { border-color: #94a3b8; }
 
-    .avatar-frame {
+    /* Snapshot Card (replaces photo cleanly) */
+    .snapshot-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 10px;
-      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+      border-radius: 18px;
+      padding: 22px 24px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
     }
-    .avatar-frame img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      object-position: center 20%;
-      border-radius: 14px;
+    .snapshot-row {
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
     }
+    .snapshot-row:first-child { padding-top: 0; }
+    .snapshot-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .snapshot-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .snapshot-val {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .snapshot-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-top: 2px;
+    }
+    .snapshot-links a { text-decoration: none; }
+    .snapshot-links a:hover { text-decoration: underline; }
 
     /* Prominent Experience Summary */
     .statement-band {
@@ -383,7 +427,6 @@
 
     @media (max-width: 780px) {
       .hero { grid-template-columns: 1fr; padding-top: 40px; }
-      .avatar-frame { max-width: 220px; }
       .process-grid, .stack-cols { grid-template-columns: 1fr; }
       .contact-card { padding: 24px; }
     }
@@ -404,26 +447,49 @@
   <main id="top">
     <section class="container hero">
       <div>
-        <h1>Full-Stack <span>Software Engineer.</span></h1>
+        <div class="hero-kicker">
+          <span class="status-dot"></span>
+          Available for Full-Stack & Backend Roles
+        </div>
+        <h1>Ryan Kenth Morales — Full-Stack <span>Software Engineer.</span></h1>
         <p>
           I help founders and engineering teams ship reliable web applications, APIs, data pipelines, and cloud
-          systems with Python, FastAPI, TypeScript, React, SvelteKit, Node.js, and PostgreSQL[cite: 1, 2].
+          systems with Python, FastAPI, TypeScript, React, SvelteKit, Node.js, and PostgreSQL.
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#experience">View experience</a>
           <a class="btn btn-ghost" href="mailto:ryankenthmorales@gmail.com">Get in touch</a>
         </div>
       </div>
-      <div class="avatar-frame">
-        <img src="avatar.png" alt="Ryan Kenth Morales" />
-      </div>
+
+      <aside class="snapshot-card" aria-label="Quick profile details">
+        <div class="snapshot-row">
+          <div class="snapshot-label">Experience</div>
+          <div class="snapshot-val">8 Years · Production Systems</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Core Stack</div>
+          <div class="snapshot-val">Python, FastAPI, TypeScript, React, NestJS, PostgreSQL</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Location</div>
+          <div class="snapshot-val">Bulacan, Philippines (US & Global Remote)</div>
+        </div>
+        <div class="snapshot-row">
+          <div class="snapshot-label">Profiles</div>
+          <div class="snapshot-links">
+            <a href="https://github.com/ryan-dev28" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/ryan-kenth-morales-3403ba183" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+      </aside>
     </section>
 
     <div class="container statement-band">
       <div class="statement-card">
         <p>
           8 years of software engineering experience across sports analytics, location data platforms, financial and
-          insurance systems, enterprise tooling, and cloud operations[cite: 1, 2, 3].
+          insurance systems, enterprise tooling, and cloud operations.
         </p>
       </div>
     </div>
@@ -438,29 +504,29 @@
             <div class="exp-header">
               <div>
                 <h3>RE²</h3>
-                <p class="exp-role">Full Stack Engineer (Part-time) · Remote[cite: 2]</p>
+                <p class="exp-role">Full Stack Engineer (Part-time) · Remote</p>
               </div>
-              <span class="exp-date">Sept 2026 – Present[cite: 2]</span>
+              <span class="exp-date">Sept 2026 – Present</span>
             </div>
             <p class="exp-summary">
-              Migrated backend capabilities to Python/FastAPI on Google Cloud and supported location-scoring workflows[cite: 2].
+              Migrated backend capabilities to Python/FastAPI on Google Cloud and supported location-scoring workflows.
             </p>
             <div class="callout">
-              <strong>13 backend features</strong> migrated from Supabase to FastAPI and SQLAlchemy on Cloud SQL (PostgreSQL/PostGIS) using a vertical-slice architecture[cite: 2].
+              <strong>13 backend features</strong> migrated from Supabase to FastAPI and SQLAlchemy on Cloud SQL (PostgreSQL/PostGIS) using a vertical-slice architecture.
             </div>
             <ul class="details">
-              <li>Secured API routes with Firebase ID token verification and cron-secret validation, and built a document vault with Google Cloud Storage signed URLs[cite: 2].</li>
-              <li>Prevented lost updates on concurrent session writes using transactions and row-level locking (<code>SELECT ... FOR UPDATE</code>)[cite: 2].</li>
-              <li>Configured scheduled jobs with Google Cloud Scheduler and Cloud Run Jobs, and root-caused a location-scoring coordinate bug across 16 Manhattan locations during QA[cite: 2].</li>
+              <li>Secured API routes with Firebase ID token verification and cron-secret validation, and built a document vault with Google Cloud Storage signed URLs.</li>
+              <li>Prevented lost updates on concurrent session writes using transactions and row-level locking (<code>SELECT ... FOR UPDATE</code>).</li>
+              <li>Configured scheduled jobs with Google Cloud Scheduler and Cloud Run Jobs, and root-caused a location-scoring coordinate bug across 16 Manhattan locations during QA.</li>
             </ul>
             <ul class="pill-row" aria-label="Technologies used at RE2">
-              <li>Python[cite: 2]</li>
-              <li>FastAPI[cite: 2]</li>
-              <li>SQLAlchemy[cite: 2]</li>
-              <li>PostgreSQL / PostGIS[cite: 2]</li>
-              <li>SvelteKit[cite: 2]</li>
-              <li>TypeScript[cite: 2]</li>
-              <li>Google Cloud[cite: 2]</li>
+              <li>Python</li>
+              <li>FastAPI</li>
+              <li>SQLAlchemy</li>
+              <li>PostgreSQL / PostGIS</li>
+              <li>SvelteKit</li>
+              <li>TypeScript</li>
+              <li>Google Cloud</li>
             </ul>
             <div class="ext-links">
               <a href="https://resquared.io/" target="_blank" rel="noreferrer">RE² website ↗</a>
@@ -500,31 +566,31 @@
             <div class="exp-header">
               <div>
                 <h3>N-LITE Sports</h3>
-                <p class="exp-role">Senior Full Stack Engineer · San Francisco, CA (Remote)[cite: 3]</p>
+                <p class="exp-role">Senior Full Stack Engineer · San Francisco, CA (Remote)</p>
               </div>
-              <span class="exp-date">Nov 2023 – Oct 2026[cite: 3]</span>
+              <span class="exp-date">Nov 2023 – Oct 2026</span>
             </div>
             <p class="exp-summary">
-              Led backend engineering and DevOps for sports analytics services, data pipelines, and cloud infrastructure[cite: 3].
+              Led backend engineering and DevOps for sports analytics services, data pipelines, and cloud infrastructure.
             </p>
             <div class="callout">
-              <strong>10K+ daily active users</strong> supported on production APIs, with <strong>80% faster deployments</strong> and <strong>40% faster API responses</strong>[cite: 3].
+              <strong>10K+ daily active users</strong> supported on production APIs, with <strong>80% faster deployments</strong> and <strong>40% faster API responses</strong>.
             </div>
             <ul class="details">
-              <li>Built a Python data pipeline for Dirigon that downloaded SEC filings, extracted and cleaned key fields, and loaded structured data into storage[cite: 3].</li>
-              <li>Automated cloud database backups, added stream-level ClamAV virus scanning prior to storage, and sped up releases using Docker and GitHub Actions[cite: 3].</li>
-              <li>Managed DigitalOcean infrastructure, Redis caching, query tuning, and monitoring with Grafana and Prometheus[cite: 3].</li>
+              <li>Built a Python data pipeline for Dirigon that downloaded SEC filings, extracted and cleaned key fields, and loaded structured data into storage.</li>
+              <li>Automated cloud database backups, added stream-level ClamAV virus scanning prior to storage, and sped up releases using Docker and GitHub Actions.</li>
+              <li>Managed DigitalOcean infrastructure, Redis caching, query tuning, and monitoring with Grafana and Prometheus.</li>
             </ul>
             <ul class="pill-row" aria-label="Technologies used at N-LITE Sports">
-              <li>Python[cite: 3]</li>
-              <li>NestJS[cite: 3]</li>
-              <li>TypeScript[cite: 3]</li>
-              <li>React[cite: 3]</li>
-              <li>MongoDB[cite: 3]</li>
-              <li>Redis[cite: 3]</li>
-              <li>Docker[cite: 3]</li>
-              <li>GitHub Actions[cite: 3]</li>
-              <li>Grafana & Prometheus[cite: 3]</li>
+              <li>Python</li>
+              <li>NestJS</li>
+              <li>TypeScript</li>
+              <li>React</li>
+              <li>MongoDB</li>
+              <li>Redis</li>
+              <li>Docker</li>
+              <li>GitHub Actions</li>
+              <li>Grafana & Prometheus</li>
             </ul>
             <div class="ext-links">
               <a href="https://nlitesports.com/" target="_blank" rel="noreferrer">N-LITE Sports website ↗</a>
@@ -536,28 +602,28 @@
             <div class="exp-header">
               <div>
                 <h3>Earlier Engineering Roles</h3>
-                <p class="exp-role">Intelegencia · Pointwest Innovations Corp. · Whitecloak Technologies Inc. · Kestrel IMC[cite: 3, 4]</p>
+                <p class="exp-role">Intelegencia · Pointwest Innovations Corp. · Whitecloak Technologies Inc. · Kestrel IMC</p>
               </div>
-              <span class="exp-date">Mar 2018 – Oct 2023[cite: 3, 4]</span>
+              <span class="exp-date">Mar 2018 – Oct 2023</span>
             </div>
             <p class="exp-summary">
-              Delivered microservices, database schemas, auth/payment flows, and cloud rollouts across financial, insurance, real estate, and academic platforms[cite: 3, 4].
+              Delivered microservices, database schemas, auth/payment flows, and cloud rollouts across financial, insurance, real estate, and academic platforms.
             </p>
             <ul class="details">
-              <li><strong>Intelegencia (Jul 2022 – Oct 2023):</strong> Built backend microservices for the Albert ISA financial platform and established Docker and CI/CD standards[cite: 3].</li>
-              <li><strong>Pointwest Innovations Corp. (Oct 2021 – Jul 2022):</strong> Developed backend microservices for Singlife with query optimization and Redis caching[cite: 3].</li>
-              <li><strong>Whitecloak Technologies Inc. (Jul 2020 – Oct 2021):</strong> Designed database schemas for Ayala Land's RBG CMS and built Docker/CI/CD pipelines that increased deployment frequency 3x[cite: 4].</li>
-              <li><strong>Kestrel IMC (Mar 2018 – Jun 2020):</strong> Built Ateneo University web applications with OAuth and BDO payment gateway integration, migrating apps to the cloud with zero downtime[cite: 4].</li>
+              <li><strong>Intelegencia (Jul 2022 – Oct 2023):</strong> Built backend microservices for the Albert ISA financial platform and established Docker and CI/CD standards.</li>
+              <li><strong>Pointwest Innovations Corp. (Oct 2021 – Jul 2022):</strong> Developed backend microservices for Singlife with query optimization and Redis caching.</li>
+              <li><strong>Whitecloak Technologies Inc. (Jul 2020 – Oct 2021):</strong> Designed database schemas for Ayala Land's RBG CMS and built Docker/CI/CD pipelines that increased deployment frequency 3x.</li>
+              <li><strong>Kestrel IMC (Mar 2018 – Jun 2020):</strong> Built Ateneo University web applications with OAuth and BDO payment gateway integration, migrating apps to the cloud with zero downtime.</li>
             </ul>
             <ul class="pill-row" aria-label="Technologies used in earlier roles">
-              <li>Node.js[cite: 3, 4]</li>
-              <li>NestJS[cite: 3]</li>
-              <li>Express.js[cite: 3, 4]</li>
-              <li>PostgreSQL[cite: 3]</li>
-              <li>MySQL[cite: 3, 4]</li>
-              <li>Redis[cite: 3]</li>
-              <li>Docker[cite: 3, 4]</li>
-              <li>AWS S3[cite: 4]</li>
+              <li>Node.js</li>
+              <li>NestJS</li>
+              <li>Express.js</li>
+              <li>PostgreSQL</li>
+              <li>MySQL</li>
+              <li>Redis</li>
+              <li>Docker</li>
+              <li>AWS S3</li>
             </ul>
           </article>
         </div>
@@ -599,7 +665,7 @@
         <p class="section-label">Stack & Repositories</p>
         <h2 class="section-heading">Tools I work with daily.</h2>
         <p class="stack-note">
-          Most client and company repositories are private under NDA[cite: 1, 2, 3, 4]. Architecture walkthroughs,
+          Most client and company repositories are private under NDA. Architecture walkthroughs,
           debugging notes, and sanitized code examples are available upon request.
         </p>
 
@@ -607,33 +673,33 @@
           <div class="stack-box">
             <h3>Frontend</h3>
             <ul>
-              <li>TypeScript[cite: 2]</li>
-              <li>JavaScript[cite: 2]</li>
-              <li>React[cite: 1]</li>
-              <li>SvelteKit[cite: 2]</li>
+              <li>TypeScript</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>SvelteKit</li>
             </ul>
           </div>
           <div class="stack-box">
             <h3>Backend & APIs</h3>
             <ul>
-              <li>Python[cite: 2]</li>
-              <li>FastAPI[cite: 2]</li>
-              <li>SQLAlchemy[cite: 2]</li>
-              <li>Pydantic[cite: 2]</li>
-              <li>Node.js[cite: 1]</li>
-              <li>NestJS[cite: 1]</li>
-              <li>Express.js[cite: 2]</li>
+              <li>Python</li>
+              <li>FastAPI</li>
+              <li>SQLAlchemy</li>
+              <li>Pydantic</li>
+              <li>Node.js</li>
+              <li>NestJS</li>
+              <li>Express.js</li>
             </ul>
           </div>
           <div class="stack-box">
             <h3>Data & Cloud</h3>
             <ul>
-              <li>PostgreSQL / PostGIS[cite: 2]</li>
-              <li>MySQL & MongoDB[cite: 2, 3]</li>
-              <li>Redis[cite: 2, 3]</li>
-              <li>Docker & GitHub Actions[cite: 2]</li>
-              <li>GCP / Azure / AWS / DO[cite: 1, 2]</li>
-              <li>Grafana / Prometheus / Sentry[cite: 2, 3]</li>
+              <li>PostgreSQL / PostGIS</li>
+              <li>MySQL & MongoDB</li>
+              <li>Redis</li>
+              <li>Docker & GitHub Actions</li>
+              <li>GCP / Azure / AWS / DO</li>
+              <li>Grafana / Prometheus / Sentry</li>
             </ul>
           </div>
         </div>
@@ -647,7 +713,7 @@
             <p class="section-label">Contact</p>
             <h2>Have a role or build <span>in mind?</span></h2>
             <p>
-              Open to full-stack, backend, API integration, and contract engineering roles with US and global teams[cite: 1, 2, 3].
+              Open to full-stack, backend, API integration, and contract engineering roles with US and global teams.
             </p>
           </div>
           <a class="btn btn-primary" href="mailto:ryankenthmorales@gmail.com">Start a conversation ↗</a>
@@ -658,7 +724,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© 2026 Ryan Kenth Morales · Bulacan, Philippines[cite: 1]</p>
+      <p>© 2026 Ryan Kenth Morales · Bulacan, Philippines</p>
       <div class="footer-links">
         <a href="https://github.com/ryan-dev28" target="_blank" rel="noreferrer">GitHub ↗</a>
         <a href="https://www.linkedin.com/in/ryan-kenth-morales-3403ba183" target="_blank" rel="noreferrer">LinkedIn ↗</a>
