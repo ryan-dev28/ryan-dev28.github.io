@@ -6,85 +6,165 @@
   <title>Ryan Kenth Morales — Full-Stack Software Engineer</title>
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #111827;
-      --muted: #4b5563;
-      --border: #e5e7eb;
-      --accent: #0f172a;
-      --tag-bg: #f3f4f6;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --accent: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --tag-bg: #f1f5f9;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      padding: 48px 20px;
+      line-height: 1.65;
+      padding: 40px 20px 64px;
     }
-    .container { max-width: 740px; margin: 0 auto; }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0f172a, #1d4ed8, #0284c7);
+    }
+    .container { max-width: 780px; margin: 0 auto; }
     header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 24px;
-      margin-bottom: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
     }
     .header-row {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
       flex-wrap: wrap;
     }
     .avatar {
-      width: 88px;
-      height: 88px;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
       object-fit: cover;
       object-position: center 20%;
-      border: 1px solid var(--border);
+      border: 2px solid var(--border);
       flex-shrink: 0;
     }
-    h1 { font-size: 1.9rem; letter-spacing: -0.02em; margin-bottom: 4px; }
-    .subtitle { color: var(--muted); font-size: 1.02rem; margin-bottom: 12px; }
-    .links a {
-      color: var(--accent);
-      text-decoration: none;
-      margin-right: 18px;
-      font-weight: 500;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
+    h1 {
+      font-size: 1.85rem;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin-bottom: 6px;
     }
-    .links a:hover { border-color: var(--accent); }
-    section { margin-bottom: 32px; }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 14px;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .links a:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+    }
     h2 {
-      font-size: 0.95rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       color: var(--muted);
       margin-bottom: 14px;
     }
-    p { margin-bottom: 14px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    p { margin-bottom: 14px; color: var(--text); }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
     .tag {
       background: var(--tag-bg);
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 0.88rem;
+      border: 1px solid var(--border);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 0.85rem;
       color: var(--text);
+      font-weight: 500;
     }
-    .role { margin-bottom: 20px; }
-    .role-title { font-weight: 600; font-size: 1.02rem; }
-    .role-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 6px; }
-    .note {
-      background: var(--tag-bg);
-      padding: 14px 16px;
-      border-radius: 8px;
-      font-size: 0.94rem;
+    .role {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .role:first-of-type { padding-top: 4px; }
+    .role:last-of-type {
+      border-bottom: none;
+      padding-bottom: 4px;
+    }
+    .role-title {
+      font-weight: 600;
+      font-size: 1.02rem;
+      margin-bottom: 2px;
+    }
+    .role-title a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .role-title a:hover { text-decoration: underline; }
+    .role-meta {
       color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+    ul { padding-left: 20px; }
+    li {
+      margin-bottom: 6px;
+      color: #1e293b;
+      font-size: 0.96rem;
+    }
+    li:last-child { margin-bottom: 0; }
+    .note {
+      background: var(--bg);
+      border-left: 3px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      body { padding: 24px 14px 48px; }
+      header, section { padding: 20px; }
     }
   </style>
 </head>
 <body>
+  <div class="top-bar"></div>
   <div class="container">
     <header>
       <div class="header-row">
@@ -133,7 +213,10 @@
       </div>
 
       <div class="role">
-        <div class="role-title">Lead Backend & DevOps Contractor — SPATSCORE</div>
+        <div class="role-title">
+          Lead Backend & DevOps Contractor —
+          <a href="https://spatscore.com/" target="_blank" rel="noreferrer">SPATSCORE</a>
+        </div>
         <div class="role-meta">Remote · 2025 – 2026</div>
         <ul>
           <li>Built sports analytics APIs, single-team licensing tiers, role-based visibility controls, and an academic enhancements module (student assistant invites, calendar/tutoring integration, RBAC, and compliance metrics).</li>
@@ -142,7 +225,11 @@
       </div>
 
       <div class="role">
-        <div class="role-title">Senior Full Stack Engineer — N-LITE Sports</div>
+        <div class="role-title">
+          Senior Full Stack Engineer —
+          <a href="https://nlitesports.com/" target="_blank" rel="noreferrer">N-LITE Sports</a>
+          (<a href="https://n-lite.us/" target="_blank" rel="noreferrer">Enterprise</a>)
+        </div>
         <div class="role-meta">San Francisco, CA (Remote) · Nov 2023 – Oct 2026</div>
         <ul>
           <li>Led backend and DevOps for APIs supporting 10K+ daily active users across TypeScript, React, NestJS, and Python services.</li>
