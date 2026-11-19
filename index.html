@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryan Kenth Morales — Full-Stack Software Engineer</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --accent: #0f172a;
+      --tag-bg: #f3f4f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 48px 20px;
+    }
+    .container { max-width: 740px; margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    h1 { font-size: 1.9rem; letter-spacing: -0.02em; margin-bottom: 4px; }
+    .subtitle { color: var(--muted); font-size: 1.02rem; margin-bottom: 12px; }
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 18px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+    }
+    .links a:hover { border-color: var(--accent); }
+    section { margin-bottom: 32px; }
+    h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    p { margin-bottom: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--tag-bg);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .role { margin-bottom: 20px; }
+    .role-title { font-weight: 600; font-size: 1.02rem; }
+    .role-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    .note {
+      background: var(--tag-bg);
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-row">
+        <img src="avatar.jpg" alt="Ryan Kenth Morales" class="avatar" />
+        <div>
+          <h1>Ryan Kenth Morales</h1>
+          <div class="subtitle">Full-Stack Software Engineer · Python, FastAPI, PostgreSQL, React, TypeScript, Node.js</div>
+          <div class="links">
+            <a href="mailto:ryankenthmorales@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/ryan-kenth-morales-3403ba183" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/ryan-dev28" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>About</h2>
+      <p>
+        Full-Stack Software Engineer with 8 years of experience building web applications, REST APIs,
+        microservices, data pipelines, and cloud systems for US and global teams.
+      </p>
+      <div class="tags">
+        <span class="tag">React / TypeScript</span>
+        <span class="tag">SvelteKit</span>
+        <span class="tag">Python / FastAPI</span>
+        <span class="tag">SQLAlchemy & Pydantic</span>
+        <span class="tag">Node.js / NestJS</span>
+        <span class="tag">PostgreSQL / PostGIS</span>
+        <span class="tag">Redis & MongoDB</span>
+        <span class="tag">Docker & GitHub Actions</span>
+        <span class="tag">GCP / Azure / AWS / DigitalOcean</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="role">
+        <div class="role-title">Full Stack Engineer (Part-time) — RE²</div>
+        <div class="role-meta">Remote · Sept 2026 – Present</div>
+        <ul>
+          <li>Migrated 13 backend features from Supabase to FastAPI and SQLAlchemy on Cloud SQL (PostgreSQL/PostGIS) alongside SvelteKit/TypeScript frontend work.</li>
+          <li>Added Firebase ID token verification, Cloud Scheduler/Cloud Run Jobs, signed-URL document storage, and row-level locking for concurrent session writes.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-title">Lead Backend & DevOps Contractor — SPATSCORE</div>
+        <div class="role-meta">Remote · 2025 – 2026</div>
+        <ul>
+          <li>Built sports analytics APIs, single-team licensing tiers, role-based visibility controls, and an academic enhancements module (student assistant invites, calendar/tutoring integration, RBAC, and compliance metrics).</li>
+          <li>Implemented automated PostgreSQL backups to Azure Blob Storage, a self-hosted ClamAV scanning service over NATS, and Azure Container Apps deployments.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-title">Senior Full Stack Engineer — N-LITE Sports</div>
+        <div class="role-meta">San Francisco, CA (Remote) · Nov 2023 – Oct 2026</div>
+        <ul>
+          <li>Led backend and DevOps for APIs supporting 10K+ daily active users across TypeScript, React, NestJS, and Python services.</li>
+          <li>Cut deployment times by 80% with Docker and GitHub Actions, improved API response times by 40% via query profiling and Redis caching, and built a Python SEC filings pipeline for Dirigon.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-title">Earlier Engineering Roles</div>
+        <div class="role-meta">2018 – 2023</div>
+        <ul>
+          <li>Intelegencia, Pointwest Innovations Corp., Whitecloak Technologies Inc., and Kestrel IMC — building financial, insurance, real estate CMS, and university web applications with Node.js, NestJS, Express.js, MySQL, PostgreSQL, Docker, and cloud deployments.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="note">
+        Most client and employer repositories are private under NDA. Architecture walkthroughs, case studies, and sanitized code samples are available on request.
+      </div>
+    </section>
+  </div>
+</body>
+</html>
