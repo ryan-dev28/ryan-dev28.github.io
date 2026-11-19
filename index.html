@@ -6,15 +6,15 @@
   <title>Ryan Kenth Morales — Full-Stack Software Engineer</title>
   <style>
     :root {
-      --bg: #f6f4ef;
-      --surface: #fffdf9;
-      --surface-alt: #efeae0;
-      --ink: #1c1917;
-      --muted: #57534e;
-      --line: #e2dcd0;
-      --accent: #9a3412;
-      --accent-soft: #ffedd5;
-      --forest: #1e3a2f;
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --ink: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --accent: #0d9488;
+      --accent-dark: #0f766e;
+      --accent-tint: #f0fdfa;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,26 +25,27 @@
       background: var(--bg);
       color: var(--ink);
       line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; }
 
-    .wrap {
+    .container {
       max-width: 960px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Top Bar */
-    header.site-header {
+    /* Navigation */
+    .topbar {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(246, 244, 239, 0.9);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(244, 245, 247, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-inner {
+    .topbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -52,49 +53,48 @@
     }
     .brand {
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       letter-spacing: -0.03em;
       text-decoration: none;
     }
     .brand span { color: var(--accent); }
-    nav {
+    .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 26px;
       font-size: 0.94rem;
       color: var(--muted);
     }
-    nav a {
+    .nav-links a {
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.15s ease;
     }
-    nav a:hover { color: var(--ink); }
+    .nav-links a:hover { color: var(--ink); }
 
     /* Hero */
     .hero {
-      padding: 64px 0 48px;
+      padding: 64px 0 52px;
       display: grid;
       grid-template-columns: 1.35fr 0.65fr;
-      gap: 36px;
+      gap: 40px;
       align-items: center;
     }
     .hero h1 {
-      font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+      font-size: clamp(2.15rem, 4.4vw, 3.1rem);
       line-height: 1.12;
       letter-spacing: -0.03em;
       margin-bottom: 16px;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent-soft);
+    .hero h1 span {
+      color: var(--accent-dark);
     }
     .hero p {
       color: var(--muted);
-      font-size: 1.04rem;
+      font-size: 1.05rem;
       margin-bottom: 24px;
-      max-width: 56ch;
+      max-width: 54ch;
     }
-    .hero-actions {
+    .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -102,253 +102,264 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
       padding: 10px 18px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 0.94rem;
       font-weight: 600;
       text-decoration: none;
-      border: 1px solid var(--line);
-      transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+      border: 1px solid var(--border);
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
     }
     .btn:hover { transform: translateY(-1px); }
     .btn-primary {
-      background: var(--forest);
-      color: #fff;
-      border-color: var(--forest);
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
     }
-    .btn-secondary {
+    .btn-primary:hover {
+      background: #1e293b;
+      border-color: #1e293b;
+    }
+    .btn-ghost {
       background: var(--surface);
       color: var(--ink);
     }
-    .btn-secondary:hover { border-color: var(--ink); }
+    .btn-ghost:hover { border-color: #94a3b8; }
 
-    .portrait-card {
+    .avatar-frame {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px;
-      box-shadow: 0 8px 24px rgba(28, 25, 23, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
     }
-    .portrait-card img {
+    .avatar-frame img {
       display: block;
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
       object-position: center 20%;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
-    /* Summary Strip */
-    .summary-strip {
-      background: var(--surface);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 22px 0;
+    /* Prominent Experience Summary */
+    .statement-band {
+      padding: 8px 0 24px;
     }
-    .summary-strip p {
-      font-size: 1.02rem;
+    .statement-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 14px;
+      padding: 24px 28px;
+    }
+    .statement-card p {
+      font-size: clamp(1.22rem, 2.2vw, 1.52rem);
+      line-height: 1.42;
+      letter-spacing: -0.015em;
+      font-weight: 500;
       color: var(--ink);
-      max-width: 72ch;
     }
 
     /* Sections */
-    section.block {
+    .section {
       padding: 64px 0;
-      border-bottom: 1px solid var(--line);
+      border-top: 1px solid var(--border);
     }
-    .eyebrow {
-      font-size: 0.8rem;
+    .section-label {
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.09em;
-      color: var(--accent);
+      color: var(--accent-dark);
       margin-bottom: 8px;
     }
-    h2.section-title {
-      font-size: clamp(1.5rem, 3vw, 2rem);
+    .section-heading {
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
       letter-spacing: -0.025em;
       margin-bottom: 28px;
     }
 
-    /* Experience Cards */
-    .roles-list {
+    /* Experience */
+    .exp-stack {
       display: grid;
       gap: 20px;
     }
-    article.role-card {
+    .exp-card {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px 28px;
     }
-    .role-top {
+    .exp-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-start;
       gap: 16px;
       flex-wrap: wrap;
       margin-bottom: 10px;
     }
-    .role-top h3 {
+    .exp-header h3 {
       font-size: 1.2rem;
       letter-spacing: -0.015em;
     }
-    .role-top .role-sub {
+    .exp-role {
+      font-size: 0.93rem;
       color: var(--muted);
-      font-size: 0.94rem;
       font-weight: 500;
     }
-    .role-period {
-      font-size: 0.88rem;
-      color: var(--muted);
+    .exp-date {
+      font-size: 0.86rem;
       font-weight: 600;
+      color: var(--muted);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
     }
-    .role-overview {
+    .exp-summary {
       color: var(--muted);
       margin-bottom: 14px;
     }
-    .highlight-box {
-      background: var(--bg);
-      border-left: 3px solid var(--accent);
-      padding: 12px 14px;
-      border-radius: 0 8px 8px 0;
-      margin-bottom: 14px;
+    .callout {
+      background: var(--accent-tint);
+      border: 1px solid #99f6e4;
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 10px;
       font-size: 0.94rem;
+      margin-bottom: 14px;
     }
-    .highlight-box strong { color: var(--ink); }
-    article.role-card ul.bullets {
+    .exp-card ul.details {
       padding-left: 20px;
       margin-bottom: 16px;
     }
-    article.role-card ul.bullets li {
+    .exp-card ul.details li {
       margin-bottom: 6px;
       font-size: 0.95rem;
+      color: #1e293b;
     }
-    .role-tags {
+    .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
       list-style: none;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
-    .role-tags li {
-      background: var(--surface-alt);
-      border: 1px solid var(--line);
-      padding: 3px 10px;
-      border-radius: 999px;
+    .pill-row li {
       font-size: 0.8rem;
       font-weight: 500;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: var(--ink);
     }
-    .role-links {
+    .ext-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 18px;
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--accent-dark);
     }
-    .role-links a {
-      text-decoration: none;
-    }
-    .role-links a:hover { text-decoration: underline; }
+    .ext-links a { text-decoration: none; }
+    .ext-links a:hover { text-decoration: underline; }
 
-    /* Approach Steps */
-    .steps-grid {
+    /* Approach */
+    .process-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
-    .step-card {
+    .process-card {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
     }
-    .step-num {
+    .step-badge {
       display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--accent);
-      background: var(--accent-soft);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-tint);
       padding: 3px 9px;
       border-radius: 6px;
       margin-bottom: 10px;
     }
-    .step-card h3 {
+    .process-card h3 {
       font-size: 1.05rem;
       margin-bottom: 6px;
     }
-    .step-card p {
-      color: var(--muted);
+    .process-card p {
       font-size: 0.94rem;
+      color: var(--muted);
     }
 
-    /* Stack Groups */
-    .stack-intro {
+    /* Stack */
+    .stack-note {
       color: var(--muted);
       max-width: 68ch;
       margin-bottom: 24px;
     }
-    .stack-grid {
+    .stack-cols {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
-    .stack-group {
+    .stack-box {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 20px;
     }
-    .stack-group h3 {
-      font-size: 0.95rem;
+    .stack-box h3 {
+      font-size: 0.94rem;
       margin-bottom: 12px;
-      color: var(--ink);
     }
-    .stack-group ul {
+    .stack-box ul {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
     }
-    .stack-group li {
-      background: var(--bg);
-      border: 1px solid var(--line);
+    .stack-box li {
+      font-size: 0.84rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
       padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.85rem;
+      border-radius: 8px;
     }
 
-    /* Contact CTA */
-    .cta-box {
+    /* Contact */
+    .contact-card {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 36px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 34px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 24px;
       flex-wrap: wrap;
     }
-    .cta-box h2 {
-      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    .contact-card h2 {
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
       line-height: 1.15;
       letter-spacing: -0.025em;
       margin-bottom: 8px;
     }
-    .cta-box h2 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-    .cta-box p {
+    .contact-card h2 span { color: var(--accent-dark); }
+    .contact-card p {
       color: var(--muted);
       max-width: 48ch;
     }
 
     /* Footer */
-    footer.site-footer {
+    footer.footer {
+      border-top: 1px solid var(--border);
       padding: 28px 0 40px;
       font-size: 0.9rem;
       color: var(--muted);
@@ -372,298 +383,271 @@
 
     @media (max-width: 780px) {
       .hero { grid-template-columns: 1fr; padding-top: 40px; }
-      .portrait-card { max-width: 240px; }
-      .steps-grid, .stack-grid { grid-template-columns: 1fr; }
+      .avatar-frame { max-width: 220px; }
+      .process-grid, .stack-cols { grid-template-columns: 1fr; }
+      .contact-card { padding: 24px; }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top">RKM<span>.</span></a>
-      <nav aria-label="Primary navigation">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top">Kenth<span>.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#experience">Experience</a>
         <a href="#approach">Approach</a>
-        <a href="#stack">Stack</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="wrap hero">
+    <section class="container hero">
       <div>
-        <h1>Full-Stack <em>Software Engineer.</em></h1>
+        <h1>Full-Stack <span>Software Engineer.</span></h1>
         <p>
-          I help teams build production web applications, backend APIs, data pipelines, and cloud infrastructure
-          using Python, FastAPI, TypeScript, React, SvelteKit, Node.js, and PostgreSQL.
+          I help founders and engineering teams ship reliable web applications, APIs, data pipelines, and cloud
+          systems with Python, FastAPI, TypeScript, React, SvelteKit, Node.js, and PostgreSQL[cite: 1, 2].
         </p>
-        <div class="hero-actions">
+        <div class="hero-cta">
           <a class="btn btn-primary" href="#experience">View experience</a>
-          <a class="btn btn-secondary" href="mailto:ryankenthmorales@gmail.com">Get in touch</a>
+          <a class="btn btn-ghost" href="mailto:ryankenthmorales@gmail.com">Get in touch</a>
         </div>
       </div>
-      <div class="portrait-card">
+      <div class="avatar-frame">
         <img src="avatar.png" alt="Ryan Kenth Morales" />
       </div>
     </section>
 
-    <div class="summary-strip">
-      <div class="wrap">
+    <div class="container statement-band">
+      <div class="statement-card">
         <p>
-          <strong>8 years of software engineering experience</strong> across sports analytics, location data platforms,
-          financial and insurance systems, enterprise tooling, and cloud operations.
+          8 years of software engineering experience across sports analytics, location data platforms, financial and
+          insurance systems, enterprise tooling, and cloud operations[cite: 1, 2, 3].
         </p>
       </div>
     </div>
 
-    <section id="experience" class="block">
-      <div class="wrap">
-        <p class="eyebrow">Experience</p>
-        <h2 class="section-title">Selected roles and systems built.</h2>
+    <section id="experience" class="section">
+      <div class="container">
+        <p class="section-label">Experience</p>
+        <h2 class="section-heading">Selected roles and systems built.</h2>
 
-        <div class="roles-list">
-          <article class="role-card">
-            <div class="role-top">
+        <div class="exp-stack">
+          <article class="exp-card">
+            <div class="exp-header">
               <div>
                 <h3>RE²</h3>
-                <p class="role-sub">Full Stack Engineer (Part-time) · Remote</p>
+                <p class="exp-role">Full Stack Engineer (Part-time) · Remote[cite: 2]</p>
               </div>
-              <p class="role-period">Sept 2026 – Present</p>
+              <span class="exp-date">Sept 2026 – Present[cite: 2]</span>
             </div>
-            <p class="role-overview">
-              Migrated backend features and supported location-scoring workflows across Python, PostgreSQL/PostGIS, and SvelteKit.
+            <p class="exp-summary">
+              Migrated backend capabilities to Python/FastAPI on Google Cloud and supported location-scoring workflows[cite: 2].
             </p>
-            <div class="highlight-box">
-              <strong>13 backend features</strong> migrated from Supabase to FastAPI and SQLAlchemy on Cloud SQL (PostgreSQL/PostGIS) using a vertical-slice architecture.
+            <div class="callout">
+              <strong>13 backend features</strong> migrated from Supabase to FastAPI and SQLAlchemy on Cloud SQL (PostgreSQL/PostGIS) using a vertical-slice architecture[cite: 2].
             </div>
-            <ul class="bullets">
-              <li>Secured endpoints with Firebase ID token verification and cron-secret validation, and built a document vault using Google Cloud Storage signed URLs.</li>
-              <li>Prevented lost updates on concurrent session writes with database transactions and row-level locking (<code>SELECT ... FOR UPDATE</code>).</li>
-              <li>Built scheduled jobs with Google Cloud Scheduler and Cloud Run Jobs, and root-caused a location-scoring coordinate bug during QA across 16 Manhattan locations.</li>
+            <ul class="details">
+              <li>Secured API routes with Firebase ID token verification and cron-secret validation, and built a document vault with Google Cloud Storage signed URLs[cite: 2].</li>
+              <li>Prevented lost updates on concurrent session writes using transactions and row-level locking (<code>SELECT ... FOR UPDATE</code>)[cite: 2].</li>
+              <li>Configured scheduled jobs with Google Cloud Scheduler and Cloud Run Jobs, and root-caused a location-scoring coordinate bug across 16 Manhattan locations during QA[cite: 2].</li>
             </ul>
-            <ul class="role-tags" aria-label="Technologies used at RE2">
-              <li>Python</li>
-              <li>FastAPI</li>
-              <li>SQLAlchemy</li>
-              <li>PostgreSQL / PostGIS</li>
-              <li>SvelteKit</li>
-              <li>TypeScript</li>
-              <li>GCP</li>
+            <ul class="pill-row" aria-label="Technologies used at RE2">
+              <li>Python[cite: 2]</li>
+              <li>FastAPI[cite: 2]</li>
+              <li>SQLAlchemy[cite: 2]</li>
+              <li>PostgreSQL / PostGIS[cite: 2]</li>
+              <li>SvelteKit[cite: 2]</li>
+              <li>TypeScript[cite: 2]</li>
+              <li>Google Cloud[cite: 2]</li>
             </ul>
+            <div class="ext-links">
+              <a href="https://resquared.io/" target="_blank" rel="noreferrer">RE² website ↗</a>
+            </div>
           </article>
 
-          <article class="role-card">
-            <div class="role-top">
+          <article class="exp-card">
+            <div class="exp-header">
               <div>
                 <h3>SPATSCORE</h3>
-                <p class="role-sub">Lead Backend & DevOps Contractor · Remote</p>
+                <p class="exp-role">Lead Backend & DevOps Contractor · Remote</p>
               </div>
-              <p class="role-period">2025 – 2026</p>
+              <span class="exp-date">2025 – 2026</span>
             </div>
-            <p class="role-overview">
-              Built athletic operations and analytics APIs, access controls, background scanning, and cloud deployment pipelines.
+            <p class="exp-summary">
+              Architected sports analytics APIs, role-based access rules, background scanning, and cloud deployments.
             </p>
-            <ul class="bullets">
-              <li>Developed sports analytics APIs, single-team licensing tiers, role-based visibility controls, and an academic enhancements module (student assistant invites, calendar/tutoring integration, RBAC, and compliance metrics).</li>
-              <li>Set up automated PostgreSQL backups streaming to Azure Blob Storage, a self-hosted ClamAV scanning service over NATS, and Azure Container Apps deployments.</li>
+            <ul class="details">
+              <li>Built sports analytics APIs, single-team licensing tiers, role-based visibility controls, and an academic enhancements module (student assistant invites, calendar/tutoring integration, RBAC, and compliance metrics).</li>
+              <li>Implemented automated PostgreSQL backups to Azure Blob Storage, a self-hosted ClamAV scanning service over NATS, and Azure Container Apps deployments.</li>
             </ul>
-            <ul class="role-tags" aria-label="Technologies used at SPATSCORE">
+            <ul class="pill-row" aria-label="Technologies used at SPATSCORE">
               <li>TypeScript</li>
-              <li>Node.js / NestJS</li>
+              <li>NestJS</li>
               <li>PostgreSQL</li>
               <li>NATS</li>
               <li>ClamAV</li>
               <li>Azure Container Apps</li>
               <li>Azure Blob Storage</li>
             </ul>
-            <div class="role-links">
+            <div class="ext-links">
               <a href="https://spatscore.com/" target="_blank" rel="noreferrer">SPATSCORE website ↗</a>
             </div>
           </article>
 
-          <article class="role-card">
-            <div class="role-top">
+          <article class="exp-card">
+            <div class="exp-header">
               <div>
                 <h3>N-LITE Sports</h3>
-                <p class="role-sub">Senior Full Stack Engineer · San Francisco, CA (Remote)</p>
+                <p class="exp-role">Senior Full Stack Engineer · San Francisco, CA (Remote)[cite: 3]</p>
               </div>
-              <p class="role-period">Nov 2023 – Oct 2026</p>
+              <span class="exp-date">Nov 2023 – Oct 2026[cite: 3]</span>
             </div>
-            <p class="role-overview">
-              Led backend development and DevOps for sports analytics APIs, data pipelines, and cloud infrastructure.
+            <p class="exp-summary">
+              Led backend engineering and DevOps for sports analytics services, data pipelines, and cloud infrastructure[cite: 3].
             </p>
-            <div class="highlight-box">
-              <strong>10K+ daily active users</strong> supported on production APIs, with <strong>80% faster deployments</strong> and <strong>40% faster API responses</strong>.
+            <div class="callout">
+              <strong>10K+ daily active users</strong> supported on production APIs, with <strong>80% faster deployments</strong> and <strong>40% faster API responses</strong>[cite: 3].
             </div>
-            <ul class="bullets">
-              <li>Built a Python pipeline for Dirigon that downloaded SEC filings, extracted and cleaned fields, and loaded structured records into the database.</li>
-              <li>Automated database backups to cloud storage, added stream-level ClamAV scanning before file storage, and cut deploy times with Docker and GitHub Actions.</li>
-              <li>Managed DigitalOcean infrastructure, Redis caching, query optimization, and observability with Grafana and Prometheus.</li>
+            <ul class="details">
+              <li>Built a Python data pipeline for Dirigon that downloaded SEC filings, extracted and cleaned key fields, and loaded structured data into storage[cite: 3].</li>
+              <li>Automated cloud database backups, added stream-level ClamAV virus scanning prior to storage, and sped up releases using Docker and GitHub Actions[cite: 3].</li>
+              <li>Managed DigitalOcean infrastructure, Redis caching, query tuning, and monitoring with Grafana and Prometheus[cite: 3].</li>
             </ul>
-            <ul class="role-tags" aria-label="Technologies used at N-LITE Sports">
-              <li>Python</li>
-              <li>NestJS</li>
-              <li>TypeScript</li>
-              <li>React</li>
-              <li>MongoDB</li>
-              <li>Redis</li>
-              <li>Docker</li>
-              <li>GitHub Actions</li>
-              <li>Grafana & Prometheus</li>
+            <ul class="pill-row" aria-label="Technologies used at N-LITE Sports">
+              <li>Python[cite: 3]</li>
+              <li>NestJS[cite: 3]</li>
+              <li>TypeScript[cite: 3]</li>
+              <li>React[cite: 3]</li>
+              <li>MongoDB[cite: 3]</li>
+              <li>Redis[cite: 3]</li>
+              <li>Docker[cite: 3]</li>
+              <li>GitHub Actions[cite: 3]</li>
+              <li>Grafana & Prometheus[cite: 3]</li>
             </ul>
-            <div class="role-links">
+            <div class="ext-links">
               <a href="https://nlitesports.com/" target="_blank" rel="noreferrer">N-LITE Sports website ↗</a>
               <a href="https://n-lite.us/" target="_blank" rel="noreferrer">N-LITE Enterprise ↗</a>
             </div>
           </article>
 
-          <article class="role-card">
-            <div class="role-top">
+          <article class="exp-card">
+            <div class="exp-header">
               <div>
                 <h3>Earlier Engineering Roles</h3>
-                <p class="role-sub">Intelegencia · Pointwest Innovations Corp. · Whitecloak Technologies Inc. · Kestrel IMC</p>
+                <p class="exp-role">Intelegencia · Pointwest Innovations Corp. · Whitecloak Technologies Inc. · Kestrel IMC[cite: 3, 4]</p>
               </div>
-              <p class="role-period">Mar 2018 – Oct 2023</p>
+              <span class="exp-date">Mar 2018 – Oct 2023[cite: 3, 4]</span>
             </div>
-            <p class="role-overview">
-              Delivered backend microservices, database schemas, payment/auth integrations, and cloud deployments across financial, insurance, real estate, and higher-education platforms.
+            <p class="exp-summary">
+              Delivered microservices, database schemas, auth/payment flows, and cloud rollouts across financial, insurance, real estate, and academic platforms[cite: 3, 4].
             </p>
-            <ul class="bullets">
-              <li><strong>Intelegencia (Jul 2022 – Oct 2023):</strong> Built backend microservices for the Albert ISA financial platform and standardized Docker and CI/CD workflows.</li>
-              <li><strong>Pointwest Innovations Corp. (Oct 2021 – Jul 2022):</strong> Developed backend microservices for the Singlife insurance platform with query optimization and Redis caching.</li>
-              <li><strong>Whitecloak Technologies Inc. (Jul 2020 – Oct 2021):</strong> Designed database schemas for Ayala Land's RBG CMS and implemented Docker/CI/CD pipelines that increased deployment frequency 3x.</li>
-              <li><strong>Kestrel IMC (Mar 2018 – Jun 2020):</strong> Built web applications for Ateneo University with OAuth and BDO payment gateway integration, migrating workloads to the cloud with zero downtime.</li>
+            <ul class="details">
+              <li><strong>Intelegencia (Jul 2022 – Oct 2023):</strong> Built backend microservices for the Albert ISA financial platform and established Docker and CI/CD standards[cite: 3].</li>
+              <li><strong>Pointwest Innovations Corp. (Oct 2021 – Jul 2022):</strong> Developed backend microservices for Singlife with query optimization and Redis caching[cite: 3].</li>
+              <li><strong>Whitecloak Technologies Inc. (Jul 2020 – Oct 2021):</strong> Designed database schemas for Ayala Land's RBG CMS and built Docker/CI/CD pipelines that increased deployment frequency 3x[cite: 4].</li>
+              <li><strong>Kestrel IMC (Mar 2018 – Jun 2020):</strong> Built Ateneo University web applications with OAuth and BDO payment gateway integration, migrating apps to the cloud with zero downtime[cite: 4].</li>
             </ul>
-            <ul class="role-tags" aria-label="Technologies used in earlier roles">
-              <li>Node.js</li>
-              <li>NestJS</li>
-              <li>Express.js</li>
-              <li>PostgreSQL</li>
-              <li>MySQL</li>
-              <li>Redis</li>
-              <li>Docker</li>
-              <li>AWS S3</li>
+            <ul class="pill-row" aria-label="Technologies used in earlier roles">
+              <li>Node.js[cite: 3, 4]</li>
+              <li>NestJS[cite: 3]</li>
+              <li>Express.js[cite: 3, 4]</li>
+              <li>PostgreSQL[cite: 3]</li>
+              <li>MySQL[cite: 3, 4]</li>
+              <li>Redis[cite: 3]</li>
+              <li>Docker[cite: 3, 4]</li>
+              <li>AWS S3[cite: 4]</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="approach" class="block">
-      <div class="wrap">
-        <p class="eyebrow">How I work</p>
-        <h2 class="section-title">From requirements to reliable production.</h2>
+    <section id="approach" class="section">
+      <div class="container">
+        <p class="section-label">Approach</p>
+        <h2 class="section-heading">How I take features into production.</h2>
 
-        <div class="steps-grid">
-          <div class="step-card">
-            <span class="step-num">01</span>
-            <h3>Scope & Architecture</h3>
-            <p>Clarify product requirements, data models, auth/security boundaries, and trade-offs before writing production code.</p>
+        <div class="process-grid">
+          <div class="process-card">
+            <span class="step-badge">01</span>
+            <h3>Clarify & Architect</h3>
+            <p>Break down business requirements, data schemas, auth/security boundaries, and technical trade-offs early.</p>
           </div>
-          <div class="step-card">
-            <span class="step-num">02</span>
-            <h3>Full-Stack & API Build</h3>
-            <p>Implement clean APIs, relational/spatial queries, background workers, and responsive UI components with clear specifications.</p>
+          <div class="process-card">
+            <span class="step-badge">02</span>
+            <h3>Build End-to-End</h3>
+            <p>Implement APIs, database queries, background workers, and clean UI flows using clear specs and tests.</p>
           </div>
-          <div class="step-card">
-            <span class="step-num">03</span>
-            <h3>Testing & Hardening</h3>
-            <p>Verify edge cases, concurrency, data integrity, and security rules with automated tests, logging, and careful code review.</p>
+          <div class="process-card">
+            <span class="step-badge">03</span>
+            <h3>Verify & Harden</h3>
+            <p>Catch edge cases, concurrency bugs, and security issues through targeted testing, logging, and review.</p>
           </div>
-          <div class="step-card">
-            <span class="step-num">04</span>
-            <h3>Deploy & Maintain</h3>
-            <p>Ship via containerized CI/CD pipelines, automate backups, and monitor performance and errors in production.</p>
+          <div class="process-card">
+            <span class="step-badge">04</span>
+            <h3>Ship & Observe</h3>
+            <p>Automate deployments and backups, tune bottlenecks, and monitor production health over time.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="stack" class="block">
-      <div class="wrap">
-        <p class="eyebrow">Tools & Technologies</p>
-        <h2 class="section-title">The stack behind the work.</h2>
-        <p class="stack-intro">
-          Most client and employer repositories remain private under NDA. I can walk through system design,
-          data flows, and sanitized implementation patterns directly.
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Stack & Repositories</p>
+        <h2 class="section-heading">Tools I work with daily.</h2>
+        <p class="stack-note">
+          Most client and company repositories are private under NDA[cite: 1, 2, 3, 4]. Architecture walkthroughs,
+          debugging notes, and sanitized code examples are available upon request.
         </p>
 
-        <div class="stack-grid">
-          <div class="stack-group">
+        <div class="stack-cols">
+          <div class="stack-box">
             <h3>Frontend</h3>
             <ul>
-              <li>TypeScript</li>
-              <li>JavaScript</li>
-              <li>React</li>
-              <li>SvelteKit</li>
+              <li>TypeScript[cite: 2]</li>
+              <li>JavaScript[cite: 2]</li>
+              <li>React[cite: 1]</li>
+              <li>SvelteKit[cite: 2]</li>
             </ul>
           </div>
-          <div class="stack-group">
+          <div class="stack-box">
             <h3>Backend & APIs</h3>
             <ul>
-              <li>Python</li>
-              <li>FastAPI</li>
-              <li>SQLAlchemy</li>
-              <li>Pydantic</li>
-              <li>Node.js</li>
-              <li>NestJS</li>
-              <li>Express.js</li>
+              <li>Python[cite: 2]</li>
+              <li>FastAPI[cite: 2]</li>
+              <li>SQLAlchemy[cite: 2]</li>
+              <li>Pydantic[cite: 2]</li>
+              <li>Node.js[cite: 1]</li>
+              <li>NestJS[cite: 1]</li>
+              <li>Express.js[cite: 2]</li>
             </ul>
           </div>
-          <div class="stack-group">
-            <h3>Databases & Caching</h3>
+          <div class="stack-box">
+            <h3>Data & Cloud</h3>
             <ul>
-              <li>PostgreSQL</li>
-              <li>PostGIS</li>
-              <li>MySQL</li>
-              <li>MongoDB</li>
-              <li>Redis</li>
-            </ul>
-          </div>
-          <div class="stack-group">
-            <h3>Cloud & DevOps</h3>
-            <ul>
-              <li>Docker</li>
-              <li>GitHub Actions</li>
-              <li>Google Cloud</li>
-              <li>Azure</li>
-              <li>DigitalOcean</li>
-              <li>AWS (S3, Lambda, IAM)</li>
-            </ul>
-          </div>
-          <div class="stack-group">
-            <h3>Auth, Security & Testing</h3>
-            <ul>
-              <li>Firebase Auth</li>
-              <li>OAuth</li>
-              <li>Signed URLs</li>
-              <li>ClamAV</li>
-              <li>pytest</li>
-            </ul>
-          </div>
-          <div class="stack-group">
-            <h3>Monitoring & AI Tooling</h3>
-            <ul>
-              <li>Grafana</li>
-              <li>Prometheus</li>
-              <li>Sentry</li>
-              <li>Claude Code</li>
-              <li>MCP & Spec Workflows</li>
+              <li>PostgreSQL / PostGIS[cite: 2]</li>
+              <li>MySQL & MongoDB[cite: 2, 3]</li>
+              <li>Redis[cite: 2, 3]</li>
+              <li>Docker & GitHub Actions[cite: 2]</li>
+              <li>GCP / Azure / AWS / DO[cite: 1, 2]</li>
+              <li>Grafana / Prometheus / Sentry[cite: 2, 3]</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="block" style="border-bottom: none;">
-      <div class="wrap">
-        <p class="eyebrow">Let's connect</p>
-        <div class="cta-box">
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-card">
           <div>
-            <h2>Have a role or product <em>in mind?</em></h2>
+            <p class="section-label">Contact</p>
+            <h2>Have a role or build <span>in mind?</span></h2>
             <p>
-              Available for full-stack, backend, API integration, and contract engineering work with US and global teams.
+              Open to full-stack, backend, API integration, and contract engineering roles with US and global teams[cite: 1, 2, 3].
             </p>
           </div>
           <a class="btn btn-primary" href="mailto:ryankenthmorales@gmail.com">Start a conversation ↗</a>
@@ -672,9 +656,9 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <p>© 2026 Ryan Kenth Morales · Bulacan, Philippines</p>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Ryan Kenth Morales · Bulacan, Philippines[cite: 1]</p>
       <div class="footer-links">
         <a href="https://github.com/ryan-dev28" target="_blank" rel="noreferrer">GitHub ↗</a>
         <a href="https://www.linkedin.com/in/ryan-kenth-morales-3403ba183" target="_blank" rel="noreferrer">LinkedIn ↗</a>
