@@ -75,6 +75,7 @@
     .nav-links { display: flex; align-items: center; gap: 28px; font-size: .9rem; }
     .nav-links a { text-decoration: none; color: var(--muted); transition: color .15s; }
     .nav-links a:hover { color: var(--ink); }
+    .nav-links .nn { font-family: var(--mono); font-size: .7rem; color: var(--accent); margin-right: 6px; }
     .nav-links .nav-cta {
       color: var(--ink); border: 1px solid var(--rule); padding: 6px 12px; border-radius: 8px;
       transition: border-color .15s, background .15s;
@@ -251,6 +252,7 @@
       .tiles { grid-template-columns: repeat(2, 1fr); }
       .nav-links { gap: 18px; }
       .nav-links .hide-sm { display: none; }
+      .nav-links .nn { display: none; }
     }
     @media (max-width: 480px) {
       .mark-name { display: none; }
@@ -265,10 +267,10 @@
         <span class="mark-name">Ryan Kenth Morales</span>
       </a>
       <nav class="nav-links" aria-label="Main">
-        <a href="#work">Work</a>
-        <a href="#approach" class="hide-sm">Approach</a>
-        <a href="#stack">Stack</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="#work"><span class="nn">01</span>Shipped</a>
+        <a href="#approach" class="hide-sm"><span class="nn">02</span>How I work</a>
+        <a href="#stack"><span class="nn">03</span>Toolkit</a>
+        <a href="#contact" class="nav-cta">Let's talk</a>
       </nav>
     </div>
   </header>
@@ -318,7 +320,7 @@
     <section id="work" class="section">
       <div class="wrap">
         <div class="sec-head">
-          <p class="sec-tag"><em>01</em> / Experience</p>
+          <p class="sec-tag"><em>01</em> / Shipped</p>
           <h2 class="sec-title">Roles, and the systems I built in them.</h2>
         </div>
 
@@ -400,7 +402,7 @@
     <section id="approach" class="section">
       <div class="wrap">
         <div class="sec-head">
-          <p class="sec-tag"><em>02</em> / Approach</p>
+          <p class="sec-tag"><em>02</em> / How I work</p>
           <h2 class="sec-title">How a feature gets to production.</h2>
         </div>
         <ol class="steps">
@@ -416,7 +418,7 @@
     <section id="stack" class="section">
       <div class="wrap">
         <div class="sec-head">
-          <p class="sec-tag"><em>03</em> / Stack</p>
+          <p class="sec-tag"><em>03</em> / Toolkit</p>
           <h2 class="sec-title">Tools I reach for every day.</h2>
         </div>
         <p class="stack-note">Most client repositories are private under NDA. I'm happy to walk through architecture, debugging notes and sanitized code on a call.</p>
@@ -475,7 +477,7 @@
 
     <!-- Contact -->
     <section id="contact" class="wrap contact">
-      <p class="sec-tag"><em>04</em> / Contact</p>
+      <p class="sec-tag"><em>04</em> / Let's talk</p>
       <h2>Have a role or a build in mind? <span>Let's talk.</span></h2>
       <a class="mail" href="mailto:ryankenthmorales@gmail.com">ryankenthmorales@gmail.com
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg>
