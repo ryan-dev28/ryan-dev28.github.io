@@ -133,7 +133,7 @@
 
     /* ---------- Numbers ---------- */
     .numbers {
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(5, 1fr);
       border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
       margin-bottom: 24px;
     }
@@ -141,7 +141,7 @@
     .num + .num { padding-left: 24px; border-left: 1px solid var(--rule); }
     .num b { display: block; font-size: 2.1rem; font-weight: 600; letter-spacing: -.04em; line-height: 1.1; }
     .num b sup { font-size: .5em; color: var(--accent); vertical-align: super; margin-left: 2px; }
-    .num span { font-family: var(--mono); font-size: .76rem; color: var(--muted); }
+    .num span { display: block; margin-top: 4px; font-family: var(--mono); font-size: .76rem; line-height: 1.4; color: var(--muted); }
 
     /* ---------- Section scaffolding ---------- */
     .section { padding: 96px 0 24px; }
@@ -185,6 +185,10 @@
     .steps .n { font-family: var(--mono); font-size: .76rem; color: var(--accent); display: block; margin-bottom: 14px; }
     .steps h3 { font-size: 1.02rem; font-weight: 600; letter-spacing: -.015em; margin-bottom: 8px; }
     .steps p { font-size: .92rem; color: var(--muted); }
+    .steps.five { grid-template-columns: repeat(5, 1fr); margin-left: 232px; }
+    .steps.five li { padding-right: 18px; }
+    .steps.five li + li { padding-left: 18px; }
+    .founder-cta { margin: 32px 0 0 232px; }
 
 
 
@@ -314,7 +318,8 @@
       .numbers { grid-template-columns: repeat(2, 1fr); }
       .num { padding: 20px 16px 18px 0; }
       .num + .num { padding-left: 16px; }
-      .num:nth-child(3) { padding-left: 0; border-left: none; }
+      .num:nth-child(odd) { padding-left: 0; border-left: none; }
+      .num:nth-child(5) { grid-column: span 2; }
       .num:nth-child(n+3) { border-top: 1px solid var(--rule); }
       .sec-head, .job, .stack-group, .case, .quote { grid-template-columns: 1fr; gap: 10px; }
       .quote figcaption { grid-column: 1; margin-top: 0; }
@@ -330,8 +335,9 @@
       .viz.stats div + div { border-left: none; border-top: 1px solid var(--rule); }
       .section { padding-top: 72px; }
       .stack-note { margin: -28px 0 32px; }
-      .steps { grid-template-columns: 1fr; }
-      .steps li, .steps li + li { padding: 18px 0; border-left: none; border-bottom: 1px solid var(--rule); }
+      .steps, .steps.five { grid-template-columns: 1fr; margin-left: 0; }
+      .founder-cta { margin-left: 0; }
+      .steps li, .steps li + li, .steps.five li, .steps.five li + li { padding: 18px 0; border-left: none; border-bottom: 1px solid var(--rule); }
       .stack-group h3 { padding-top: 0; }
       .tiles { grid-template-columns: repeat(2, 1fr); }
       .nav-links { gap: 18px; }
@@ -368,7 +374,7 @@
           <h1>Ryan Kenth Morales<span class="role">Backend &amp; Full-Stack Engineer</span></h1>
           <p class="lede">
             I build the parts users never see: <strong>auth, payments, data pipelines</strong> and the
-            infrastructure that keeps them running. 8 years with US startups and Philippine enterprises,
+            infrastructure that keeps them running. 8 years with US startups and Philippine enterprises, including 4 startup products taken from idea to production,
             mostly in <strong>Python, TypeScript and PostgreSQL</strong>.
           </p>
           <div class="actions">
@@ -397,6 +403,7 @@
     <div class="wrap">
       <div class="numbers">
         <div class="num"><b>8<sup>yrs</sup></b><span>production engineering</span></div>
+        <div class="num"><b>4</b><span>startup products shipped</span></div>
         <div class="num"><b>10K+</b><span>daily active users served</span></div>
         <div class="num"><b>80%</b><span>faster deployments</span></div>
         <div class="num"><b>40%</b><span>faster API responses</span></div>
@@ -686,9 +693,36 @@
       </div>
     </section>
 
+    <!-- Founders -->
+    <section id="founders" class="section">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="sec-tag"><em>04</em> / For founders</p>
+          <h2 class="sec-title">Have a product idea? I can take it from idea to production.</h2>
+        </div>
+        <p class="sec-note">I've helped startups ship and deploy four products:
+          <a href="https://talent.nlitesports.com/" target="_blank" rel="noreferrer">N-LITE Talent</a>,
+          <a href="https://enterprise.n-lite.us/" target="_blank" rel="noreferrer">N-LITE Enterprise</a>,
+          <a href="https://spatscore.com/" target="_blank" rel="noreferrer">SPAT</a> and
+          <a href="https://resquared.io/" target="_blank" rel="noreferrer">RE²</a>.</p>
+        <ol class="steps five">
+          <li><span class="n">01</span><h3>Discuss</h3><p>We talk through the idea, who it's for, and what a successful launch looks like.</p></li>
+          <li><span class="n">02</span><h3>Plan</h3><p>Scope the first version, pick the stack, and map the data and integrations.</p></li>
+          <li><span class="n">03</span><h3>Design</h3><p>Architecture, database, APIs and auth, agreed on before any code is written.</p></li>
+          <li><span class="n">04</span><h3>Build</h3><p>Backend, frontend and integrations like payments, shipped in small steps you can review.</p></li>
+          <li><span class="n">05</span><h3>Deploy</h3><p>CI/CD, cloud setup, monitoring and backups, so it keeps running after launch.</p></li>
+        </ol>
+        <div class="founder-cta">
+          <a class="btn btn-solid" href="mailto:ryankenthmorales@gmail.com?subject=Product%20idea">Tell me about your idea
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section id="contact" class="wrap contact">
-      <p class="sec-tag"><em>04</em> / Let's talk</p>
+      <p class="sec-tag"><em>05</em> / Let's talk</p>
       <h2>Have a role or a build in mind? <span>Let's talk.</span></h2>
       <a class="mail" href="mailto:ryankenthmorales@gmail.com">ryankenthmorales@gmail.com
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg>
