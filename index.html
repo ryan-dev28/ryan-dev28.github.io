@@ -105,7 +105,7 @@
       line-height: 1.02; letter-spacing: -.045em; font-weight: 600;
       margin-bottom: 24px;
     }
-    .hero h1 .role { display: block; color: var(--muted); font-weight: 500; }
+    .hero h1 .role { display: block; color: var(--muted); font-weight: 500; font-size: .52em; letter-spacing: -.03em; margin-top: 10px; }
     .lede { font-size: 1.12rem; color: var(--ink-2); max-width: 56ch; margin-bottom: 32px; }
     .lede strong { color: var(--ink); font-weight: 600; }
 
@@ -186,6 +186,47 @@
     .steps h3 { font-size: 1.02rem; font-weight: 600; letter-spacing: -.015em; margin-bottom: 8px; }
     .steps p { font-size: .92rem; color: var(--muted); }
 
+
+    /* ---------- Quote ---------- */
+    .quote { margin: 8px 0 0; padding: 28px 0 8px; display: grid; grid-template-columns: 200px 1fr; gap: 32px; }
+    .quote::before { content: "Recommendation"; font-family: var(--mono); font-size: .78rem; color: var(--muted); padding-top: 4px; }
+    .quote blockquote { font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.5; letter-spacing: -.015em; color: var(--ink); max-width: 60ch; }
+    .quote figcaption { grid-column: 2; font-family: var(--mono); font-size: .78rem; color: var(--muted); margin-top: -18px; }
+    .quote figcaption a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    .quote figcaption a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ---------- Case studies ---------- */
+    .case { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 40px 0; border-top: 1px solid var(--rule); }
+    .case:last-child { border-bottom: 1px solid var(--rule); }
+    .case > div, .job > div { min-width: 0; }
+    .case-meta { font-family: var(--mono); font-size: .8rem; color: var(--ink-2); line-height: 1.7; }
+    .case-meta span { display: block; color: var(--accent); }
+    .case-meta small { display: block; color: var(--muted); font-size: .76rem; }
+    .case h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -.025em; margin-bottom: 18px; max-width: 34ch; }
+    .prs { margin-bottom: 22px; max-width: 66ch; }
+    .prs div { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding: 8px 0; }
+    .prs dt { font-family: var(--mono); font-size: .76rem; color: var(--muted); padding-top: 3px; }
+    .prs dd { color: var(--ink-2); font-size: .96rem; }
+    .viz { margin: 0; border: 1px solid var(--rule); border-radius: 12px; background: var(--card); padding: 20px; max-width: 680px; }
+    .viz svg { width: 100%; height: auto; display: block; }
+    .viz .node rect { fill: var(--paper); stroke: var(--rule); stroke-width: 1.2; }
+    .viz .node text { font-family: var(--mono); font-size: 13px; fill: var(--ink); text-anchor: middle; }
+    .viz .node.hot rect { stroke: var(--accent); fill: var(--accent-soft); }
+    .viz .node.ok rect { stroke: #16a34a; }
+    .viz .node.bad rect { stroke: #dc2626; }
+    .viz .edge path { fill: none; stroke: var(--muted); stroke-width: 1.4; marker-end: none; }
+    .viz .lbl { font-family: var(--mono); font-size: 11px; fill: var(--muted); text-anchor: middle; }
+    .viz.code { background: #16171a; border-color: #16171a; padding: 18px 20px; overflow-x: auto; }
+    .viz.code pre { margin: 0; }
+    .viz.code code { font-family: var(--mono); font-size: .82rem; line-height: 1.7; color: #e6e4dc; }
+    .viz.code .k { color: #f0703a; }
+    .viz.code .c { color: #7d808a; }
+    .viz.stats { display: grid; grid-template-columns: repeat(3, 1fr); padding: 0; }
+    .viz.stats div { padding: 18px 20px; }
+    .viz.stats div + div { border-left: 1px solid var(--rule); }
+    .viz.stats b { display: block; font-size: 1.9rem; font-weight: 600; letter-spacing: -.04em; line-height: 1.1; }
+    .viz.stats span { font-family: var(--mono); font-size: .74rem; color: var(--muted); }
+
     /* ---------- Stack ---------- */
     .stack-note { color: var(--muted); font-size: .95rem; max-width: 62ch; margin: -28px 0 40px 232px; }
     .stack-group { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 24px 0; border-top: 1px solid var(--rule); }
@@ -243,7 +284,12 @@
       .num + .num { padding-left: 16px; }
       .num:nth-child(3) { padding-left: 0; border-left: none; }
       .num:nth-child(n+3) { border-top: 1px solid var(--rule); }
-      .sec-head, .job, .stack-group { grid-template-columns: 1fr; gap: 10px; }
+      .sec-head, .job, .stack-group, .case, .quote { grid-template-columns: 1fr; gap: 10px; }
+      .quote figcaption { grid-column: 1; margin-top: 0; }
+      .prs div { grid-template-columns: 1fr; gap: 2px; }
+      .viz { padding: 14px; }
+      .viz.stats { grid-template-columns: 1fr; }
+      .viz.stats div + div { border-left: none; border-top: 1px solid var(--rule); }
       .section { padding-top: 72px; }
       .stack-note { margin: -28px 0 32px; }
       .steps { grid-template-columns: 1fr; }
@@ -268,7 +314,7 @@
       </a>
       <nav class="nav-links" aria-label="Main">
         <a href="#work"><span class="nn">01</span>Shipped</a>
-        <a href="#approach" class="hide-sm"><span class="nn">02</span>How I work</a>
+        <a href="#cases" class="hide-sm"><span class="nn">02</span>Case studies</a>
         <a href="#stack"><span class="nn">03</span>Toolkit</a>
         <a href="#contact" class="nav-cta">Let's talk</a>
       </nav>
@@ -281,15 +327,18 @@
       <p class="status"><span class="pulse" aria-hidden="true"></span>Open to backend &amp; full-stack roles</p>
       <div class="hero-grid">
         <div>
-          <h1>Ryan Kenth Morales<span class="role">Software Engineer</span></h1>
+          <h1>Ryan Kenth Morales<span class="role">Backend &amp; Full-Stack Engineer</span></h1>
           <p class="lede">
-            Full-stack, backend first. For <strong>8 years</strong> I've built APIs, data pipelines and cloud
-            infrastructure for US startups and Philippine enterprises, mostly with
-            <strong>Python, TypeScript and PostgreSQL</strong>.
+            I build the parts users never see: <strong>auth, payments, data pipelines</strong> and the
+            infrastructure that keeps them running. 8 years with US startups and Philippine enterprises,
+            mostly in <strong>Python, TypeScript and PostgreSQL</strong>.
           </p>
           <div class="actions">
             <a class="btn btn-solid" href="#work">See my work
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5"/></svg>
+            </a>
+            <a class="btn btn-line" href="https://drive.google.com/file/d/1l2D6g-el2LYXSuPrLHIX0RWwlg7WQUzH/view" target="_blank" rel="noreferrer">Download CV
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>
             </a>
             <a class="btn btn-line" href="mailto:ryankenthmorales@gmail.com">Email me</a>
           </div>
@@ -314,6 +363,10 @@
         <div class="num"><b>80%</b><span>faster deployments</span></div>
         <div class="num"><b>40%</b><span>faster API responses</span></div>
       </div>
+      <figure class="quote">
+        <blockquote>“He consistently bridged the gap between application code and infrastructure, streamlining workflows and keeping our production systems stable and responsive under pressure.”</blockquote>
+        <figcaption><a href="https://www.linkedin.com/in/john-mark-bodegas/" target="_blank" rel="noreferrer">John Mark Bodegas</a> · Senior Software Engineer, N-LITE Sports</figcaption>
+      </figure>
     </div>
 
     <!-- Experience -->
@@ -399,19 +452,75 @@
       </div>
     </section>
 
-    <!-- Approach -->
-    <section id="approach" class="section">
+    <!-- Case studies -->
+    <section id="cases" class="section">
       <div class="wrap">
         <div class="sec-head">
-          <p class="sec-tag"><em>02</em> / How I work</p>
-          <h2 class="sec-title">How a feature gets to production.</h2>
+          <p class="sec-tag"><em>02</em> / Case studies</p>
+          <h2 class="sec-title">Three problems, and how I solved them.</h2>
         </div>
-        <ol class="steps">
-          <li><span class="n">01</span><h3>Clarify</h3><p>Pin down requirements, data shape, auth boundaries and trade-offs before writing code.</p></li>
-          <li><span class="n">02</span><h3>Build</h3><p>APIs, queries, background jobs and UI, written against a clear spec, with tests.</p></li>
-          <li><span class="n">03</span><h3>Harden</h3><p>Hunt edge cases, race conditions and security gaps with targeted tests, logs and review.</p></li>
-          <li><span class="n">04</span><h3>Ship &amp; watch</h3><p>Automate deploys and backups, fix bottlenecks, and keep an eye on production.</p></li>
-        </ol>
+
+        <article class="case">
+          <div class="case-meta"><span>Case 01</span>N-LITE Sports · SPATSCORE<small>Security</small></div>
+          <div>
+            <h3>Rejecting infected uploads before they reach storage</h3>
+            <dl class="prs">
+              <div><dt>Problem</dt><dd>User uploads went straight to cloud storage. One bad file could sit there and get served to other users.</dd></div>
+              <div><dt>What I did</dt><dd>Added ClamAV scanning to the upload API. The file stream is scanned first, and only clean files are written to storage. At SPATSCORE, I ran it as a self-hosted scanning service over NATS.</dd></div>
+              <div><dt>Result</dt><dd>Infected files are rejected at the door and never stored.</dd></div>
+            </dl>
+            <figure class="viz" aria-label="Upload flow: client to API, scanned by ClamAV, then stored if clean or rejected if infected">
+              <svg viewBox="0 0 640 150" role="img">
+                <g class="node"><rect x="4" y="50" width="104" height="44" rx="8"/><text x="56" y="77">Client</text></g>
+                <g class="node"><rect x="160" y="50" width="120" height="44" rx="8"/><text x="220" y="77">Upload API</text></g>
+                <g class="node hot"><rect x="332" y="50" width="120" height="44" rx="8"/><text x="392" y="77">ClamAV scan</text></g>
+                <g class="node ok"><rect x="520" y="8" width="116" height="40" rx="8"/><text x="578" y="33">Storage</text></g>
+                <g class="node bad"><rect x="520" y="100" width="116" height="40" rx="8"/><text x="578" y="125">Rejected</text></g>
+                <g class="edge"><path d="M108 72H160"/><path d="M280 72H332"/><path d="M452 66 C486 66 490 28 520 28"/><path d="M452 78 C486 78 490 120 520 120"/></g>
+                <text class="lbl" x="134" y="64">stream</text><text class="lbl" x="488" y="38">clean</text><text class="lbl" x="488" y="112">infected</text>
+              </svg>
+            </figure>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="case-meta"><span>Case 02</span>RE²<small>Data integrity</small></div>
+          <div>
+            <h3>Two saves at once, one lost update</h3>
+            <dl class="prs">
+              <div><dt>Problem</dt><dd>Session progress was saved as read, change, write. Tests passed, but they only sent one request at a time. Two saves arriving together would overwrite each other and silently lose data.</dd></div>
+              <div><dt>What I did</dt><dd>Wrapped the write in a transaction with row-level locking, so the second request waits for the first to finish.</dd></div>
+              <div><dt>Result</dt><dd>Concurrent saves no longer drop data.</dd></div>
+            </dl>
+            <figure class="viz code">
+<pre><code><span class="c"># simplified example</span>
+<span class="k">with</span> db.begin():
+    row = db.execute(
+        select(Session)
+        .where(Session.id == session_id)
+        .with_for_update()   <span class="c"># SELECT … FOR UPDATE</span>
+    ).scalar_one()
+    row.progress = merge(row.progress, changes)</code></pre>
+            </figure>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="case-meta"><span>Case 03</span>Location-scoring platform<small>QA &amp; debugging</small></div>
+          <div>
+            <h3>One fixed coordinate behind every score</h3>
+            <dl class="prs">
+              <div><dt>Problem</dt><dd>Before launch, the location scores needed to be checked against real places, not just against what the code returned.</dd></div>
+              <div><dt>What I did</dt><dd>Led end-to-end QA: validated 16 Manhattan locations against their stored scores, logged every mismatch, and traced the biggest one to its source.</dd></div>
+              <div><dt>Result</dt><dd>Found that every headline score was being computed from fixed Times Square coordinates instead of each location's own.</dd></div>
+            </dl>
+            <div class="viz stats">
+              <div><b>16</b><span>locations validated</span></div>
+              <div><b>13</b><span>bugs logged</span></div>
+              <div><b>1</b><span>critical root cause</span></div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
