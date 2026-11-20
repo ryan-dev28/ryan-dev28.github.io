@@ -187,6 +187,38 @@
     .steps p { font-size: .92rem; color: var(--muted); }
 
 
+
+    /* ---------- Work screenshots ---------- */
+    .sec-note { color: var(--muted); font-size: .95rem; margin: -28px 0 32px 232px; max-width: 62ch; }
+    .sec-note a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+    .job-role-inline { color: var(--muted); font-size: .95rem; }
+    .job .job-sum { margin-bottom: 10px; }
+    .job .tech { margin-bottom: 20px; }
+    .shots { display: grid; gap: 14px; max-width: 720px; }
+    .shots.one { max-width: 560px; }
+    .shots.two { grid-template-columns: 1fr 1fr; }
+    .shots.three { grid-template-columns: repeat(3, 1fr); margin-top: 22px; max-width: none; }
+    .shot.static { cursor: default; }
+    .shot.static:hover { transform: none; box-shadow: none; border-color: var(--rule); }
+    .shot {
+      display: block; text-decoration: none; border: 1px solid var(--rule); border-radius: 12px; overflow: hidden;
+      background: var(--card); transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
+    }
+    .shot:hover { transform: translateY(-3px); border-color: var(--muted); box-shadow: 0 14px 30px -18px rgba(0,0,0,.35); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--rule); background: var(--paper-2); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); }
+    .shot-bar span { font-family: var(--mono); font-size: .74rem; color: var(--muted); margin-left: 8px; flex: 1; }
+    .shot-bar b { font-weight: 400; font-size: .8rem; color: var(--muted); transition: color .15s; }
+    .shot:hover .shot-bar b { color: var(--accent); }
+    .shot-img { position: relative; display: block; aspect-ratio: 2 / 1; background: var(--paper); }
+    .shot-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .shot-fallback { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+    .earlier { list-style: none; margin-top: 6px; }
+    .earlier li { display: grid; grid-template-columns: 130px 170px 1fr auto; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--rule); font-size: .94rem; color: var(--ink-2); }
+    .earlier li:last-child { border-bottom: none; }
+    .earlier b { color: var(--ink); font-weight: 600; }
+    .earlier em { font-style: normal; font-family: var(--mono); font-size: .78rem; color: var(--muted); padding-top: 2px; }
+
     /* ---------- Quote ---------- */
     .quote { margin: 8px 0 0; padding: 28px 0 8px; display: grid; grid-template-columns: 200px 1fr; gap: 32px; }
     .quote::before { content: "Recommendation"; font-family: var(--mono); font-size: .78rem; color: var(--muted); padding-top: 4px; }
@@ -286,6 +318,12 @@
       .num:nth-child(n+3) { border-top: 1px solid var(--rule); }
       .sec-head, .job, .stack-group, .case, .quote { grid-template-columns: 1fr; gap: 10px; }
       .quote figcaption { grid-column: 1; margin-top: 0; }
+      .sec-note { margin: -28px 0 24px; }
+      .shots.two, .shots.three { grid-template-columns: 1fr; }
+      .earlier li { grid-template-columns: 1fr auto; gap: 2px 12px; }
+      .earlier li span:nth-of-type(1) { grid-column: 1; }
+      .earlier li span:nth-of-type(2) { grid-column: 1; font-size: .85rem; color: var(--muted); }
+      .earlier li em { grid-column: 2; grid-row: 1; }
       .prs div { grid-template-columns: 1fr; gap: 2px; }
       .viz { padding: 14px; }
       .viz.stats { grid-template-columns: 1fr; }
@@ -374,79 +412,110 @@
       <div class="wrap">
         <div class="sec-head">
           <p class="sec-tag"><em>01</em> / Shipped</p>
-          <h2 class="sec-title">Roles, and the systems I built in them.</h2>
+          <h2 class="sec-title">Where I've worked.</h2>
         </div>
+        <p class="sec-note">The details for each role are in my <a href="https://drive.google.com/file/d/1l2D6g-el2LYXSuPrLHIX0RWwlg7WQUzH/view" target="_blank" rel="noreferrer">CV</a>. Screenshots link to each company's public site.</p>
 
         <article class="job">
           <div class="job-when">Sept 2026 – Present<small>Part-time · Remote</small></div>
           <div>
-            <div class="job-title">
-              <h3>RE²</h3>
-              <a href="https://resquared.io/" target="_blank" rel="noreferrer">resquared.io ↗</a>
+            <div class="job-title"><h3>RE²</h3><span class="job-role-inline">Full Stack Engineer</span></div>
+            <p class="job-sum">Location-scoring platform for real estate. I moved its backend to Python and FastAPI on Google Cloud.</p>
+            <p class="tech"><span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>PostgreSQL/PostGIS</span><span>SvelteKit</span><span>Google Cloud</span></p>
+            <div class="shots one">
+              <a class="shot" href="https://resquared.io/" target="_blank" rel="noreferrer" aria-label="Open resquared.io">
+                <span class="shot-bar"><i></i><i></i><i></i><span>resquared.io</span><b>↗</b></span>
+                <span class="shot-img"><span class="shot-fallback">resquared.io</span><img src="images/resquared.webp" alt="resquared.io homepage" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('.webp','.png')}else{this.remove()}" /></span>
+              </a>
             </div>
-            <p class="job-role">Full Stack Engineer</p>
-            <p class="job-sum">Moving backend features to Python and FastAPI on Google Cloud, and supporting location-scoring workflows.</p>
-            <p class="impact"><span>Migrated <strong>13 backend features</strong> from Supabase to FastAPI and SQLAlchemy on Cloud SQL (PostgreSQL/PostGIS), using a vertical-slice architecture.</span></p>
-            <ul class="points">
-              <li>Secured the API with Firebase ID token verification, protected the scheduled-job entry point (Cloud Scheduler and Cloud Run Jobs) with cron-secret validation, and built a document vault on Google Cloud Storage signed URLs.</li>
-              <li>Stopped lost updates on concurrent session writes using transactions and row-level locking (<code>SELECT … FOR UPDATE</code>).</li>
-              <li>Root-caused a location-scoring coordinate bug affecting 16 Manhattan locations during QA.</li>
-            </ul>
-            <p class="tech"><span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>PostgreSQL/PostGIS</span><span>SvelteKit</span><span>TypeScript</span><span>Google Cloud</span></p>
           </div>
         </article>
 
         <article class="job">
           <div class="job-when">2025 – 2026<small>Contract · Remote</small></div>
           <div>
-            <div class="job-title">
-              <h3>SPATSCORE</h3>
-              <a href="https://spatscore.com/" target="_blank" rel="noreferrer">spatscore.com ↗</a>
+            <div class="job-title"><h3>SPATSCORE</h3><span class="job-role-inline">Lead Backend &amp; DevOps Engineer</span></div>
+            <p class="job-sum">Sports analytics platform. I owned the APIs, payments, background jobs and Azure deployments.</p>
+            <p class="tech"><span>TypeScript</span><span>NestJS</span><span>PostgreSQL</span><span>Stripe</span><span>BullMQ</span><span>Redis</span><span>Dapr</span><span>Azure</span></p>
+            <div class="shots one">
+              <a class="shot" href="https://spatscore.com/" target="_blank" rel="noreferrer" aria-label="Open spatscore.com">
+                <span class="shot-bar"><i></i><i></i><i></i><span>spatscore.com</span><b>↗</b></span>
+                <span class="shot-img"><span class="shot-fallback">spatscore.com</span><img src="images/spat.webp" alt="spatscore.com homepage" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('.webp','.png')}else{this.remove()}" /></span>
+              </a>
             </div>
-            <p class="job-role">Lead Backend &amp; DevOps Engineer</p>
-            <p class="job-sum">Designed sports analytics APIs, payments, access rules, background jobs and cloud deployments.</p>
-            <ul class="points">
-              <li>Built sports analytics APIs, single-team licensing tiers, role-based visibility, and an academic module with student-assistant invites, calendar and tutoring integration, RBAC and compliance metrics.</li>
-              <li>Integrated Stripe payments, and built background job processing with BullMQ queues on Redis.</li>
-              <li>Set up automated PostgreSQL backups to Azure Blob Storage, a self-hosted ClamAV scanning service over NATS, Dapr for the microservices, and deployments on Azure Container Apps.</li>
-            </ul>
-            <p class="tech"><span>TypeScript</span><span>NestJS</span><span>PostgreSQL</span><span>Stripe</span><span>BullMQ</span><span>Redis</span><span>Dapr</span><span>NATS</span><span>ClamAV</span><span>Azure Container Apps</span><span>Azure Blob Storage</span></p>
           </div>
         </article>
 
         <article class="job">
           <div class="job-when">Nov 2023 – Oct 2026<small>San Francisco, CA · Remote</small></div>
           <div>
-            <div class="job-title">
-              <h3>N-LITE Sports</h3>
-              <a href="https://nlitesports.com/" target="_blank" rel="noreferrer">nlitesports.com ↗</a>
-              <a href="https://n-lite.us/" target="_blank" rel="noreferrer">n-lite.us ↗</a>
+            <div class="job-title"><h3>N-LITE Sports</h3><span class="job-role-inline">Senior Full Stack Engineer</span></div>
+            <p class="job-sum">Sports-tech platform with 10K+ daily users. I led backend engineering and DevOps.</p>
+            <p class="tech"><span>Python</span><span>NestJS</span><span>TypeScript</span><span>React</span><span>MongoDB</span><span>Redis</span><span>Docker</span><span>GitHub Actions</span></p>
+            <div class="shots two">
+              <a class="shot" href="https://talent.nlitesports.com/" target="_blank" rel="noreferrer" aria-label="Open talent.nlitesports.com">
+                <span class="shot-bar"><i></i><i></i><i></i><span>talent.nlitesports.com</span><b>↗</b></span>
+                <span class="shot-img"><span class="shot-fallback">talent.nlitesports.com</span><img src="images/nlite.webp" alt="talent.nlitesports.com homepage" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('.webp','.png')}else{this.remove()}" /></span>
+              </a>
+              <a class="shot" href="https://enterprise.n-lite.us/" target="_blank" rel="noreferrer" aria-label="Open enterprise.n-lite.us">
+                <span class="shot-bar"><i></i><i></i><i></i><span>enterprise.n-lite.us</span><b>↗</b></span>
+                <span class="shot-img"><span class="shot-fallback">enterprise.n-lite.us</span><img src="images/enterprise.webp" alt="enterprise.n-lite.us homepage" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('.webp','.png')}else{this.remove()}" /></span>
+              </a>
             </div>
-            <p class="job-role">Senior Full Stack Engineer</p>
-            <p class="job-sum">Led backend engineering and DevOps for sports analytics services, data pipelines and cloud infrastructure.</p>
-            <p class="impact"><span>Production APIs serving <strong>10K+ daily active users</strong>, with <strong>80% faster deployments</strong> and <strong>40% faster API responses</strong>.</span></p>
-            <ul class="points">
-              <li>Built a Python data pipeline for Dirigon that downloads SEC filings, extracts and cleans key fields, and loads structured data into storage.</li>
-              <li>Automated cloud database backups, added stream-level ClamAV virus scanning before storage, and sped up releases with Docker and GitHub Actions.</li>
-              <li>Managed DigitalOcean infrastructure, Redis caching, query tuning, and monitoring with Grafana and Prometheus.</li>
-            </ul>
-            <p class="tech"><span>Python</span><span>NestJS</span><span>TypeScript</span><span>React</span><span>MongoDB</span><span>Redis</span><span>Docker</span><span>GitHub Actions</span><span>Grafana</span><span>Prometheus</span></p>
           </div>
         </article>
 
         <article class="job">
-          <div class="job-when">Mar 2018 – Oct 2023<small>Manila, PH</small></div>
+          <div class="job-when">Jul 2022 – Oct 2023<small>Pasig City, PH</small></div>
           <div>
-            <div class="job-title"><h3>Earlier roles</h3></div>
-            <p class="job-role">Intelegencia · Pointwest · Whitecloak · Kestrel IMC</p>
-            <p class="job-sum">Microservices, database design, auth and payment flows, and cloud rollouts for financial, insurance, real estate and university platforms.</p>
-            <ul class="points">
-              <li><strong>Intelegencia</strong> (2022–2023): built backend microservices for the Albert ISA financial platform and set the team's Docker and CI/CD standards.</li>
-              <li><strong>Pointwest</strong> (2021–2022): built and refactored backend microservices and REST APIs for Singlife, with a focus on query optimization.</li>
-              <li><strong>Whitecloak</strong> (2020–2021): designed database schemas for Ayala Land's RBG CMS and built Docker and CI/CD pipelines that tripled deployment frequency.</li>
-              <li><strong>Kestrel IMC</strong> (2018–2020): built Ateneo University web apps with OAuth and BDO payment gateway integration, and moved them to the cloud with zero downtime.</li>
-            </ul>
-            <p class="tech"><span>Node.js</span><span>NestJS</span><span>Express.js</span><span>PostgreSQL</span><span>MySQL</span><span>Docker</span><span>AWS</span></p>
+            <div class="job-title"><h3>Intelegencia</h3><span class="job-role-inline">Software Engineer II</span></div>
+            <p class="job-sum">Backend microservices for the Albert ISA financial platform. I also set the team's Docker and CI/CD standards.</p>
+            <p class="tech"><span>Node.js</span><span>NestJS</span><span>PostgreSQL</span><span>Docker</span></p>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="job-when">Oct 2021 – Jul 2022<small>Quezon City, PH</small></div>
+          <div>
+            <div class="job-title"><h3>Pointwest</h3><span class="job-role-inline">Software Engineer</span></div>
+            <p class="job-sum">Backend microservices and REST APIs for the Singlife insurance platform, with a focus on query performance.</p>
+            <p class="tech"><span>Node.js</span><span>Express.js</span><span>MySQL</span><span>REST APIs</span></p>
+            <div class="shots one">
+              <a class="shot" href="https://singlife.com.ph/" target="_blank" rel="noreferrer" aria-label="Open singlife.com.ph">
+                <span class="shot-bar"><i></i><i></i><i></i><span>singlife.com.ph</span><b>↗</b></span>
+                <span class="shot-img"><span class="shot-fallback">singlife.com.ph</span><img src="images/singlife.webp" alt="singlife.com.ph homepage" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('.webp','.png')}else{this.remove()}" /></span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="job-when">Jul 2020 – Oct 2021<small>Pasig City, PH</small></div>
+          <div>
+            <div class="job-title"><h3>Whitecloak</h3><span class="job-role-inline">Backend Developer</span></div>
+            <p class="job-sum">Designed the database schemas for Ayala Land's RBG content management system, and built CI/CD pipelines that tripled deployment frequency.</p>
+            <p class="tech"><span>Node.js</span><span>Express.js</span><span>MySQL</span><span>Docker</span></p>
+            <div class="shots one">
+              <div class="shot static">
+                <span class="shot-bar"><i></i><i></i><i></i><span>Ayala RBG CMS · internal</span></span>
+                <span class="shot-img"><span class="shot-fallback">Ayala RBG CMS</span><img src="images/ayala.webp" alt="Ayala RBG CMS sign-in page" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('.webp','.png')}else{this.remove()}" /></span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="job-when">Mar 2018 – Jun 2020<small>Pasig City, PH</small></div>
+          <div>
+            <div class="job-title"><h3>Kestrel IMC</h3><span class="job-role-inline">Web Developer</span></div>
+            <p class="job-sum">Web apps for Ateneo University with OAuth and BDO payment gateway integration, and the IMI website. Moved apps to the cloud with zero downtime.</p>
+            <p class="tech"><span>Node.js</span><span>MySQL</span><span>AWS S3</span><span>OAuth</span></p>
+            <div class="shots one">
+              <a class="shot" href="https://www.global-imi.com/" target="_blank" rel="noreferrer" aria-label="Open global-imi.com">
+                <span class="shot-bar"><i></i><i></i><i></i><span>global-imi.com</span><b>↗</b></span>
+                <span class="shot-img"><span class="shot-fallback">global-imi.com</span><img src="images/imi.webp" alt="global-imi.com homepage" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace('.webp','.png')}else{this.remove()}" /></span>
+              </a>
+            </div>
           </div>
         </article>
       </div>
